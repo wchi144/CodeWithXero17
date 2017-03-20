@@ -22,14 +22,6 @@ namespace Xeromatic.Controllers
             return _tweetService.GetAllTweets();
         }
 
-        // Get one tweet from DB by user
-        [HttpGet]
-        [Route("tweets/{author}")]
-        public IEnumerable<TweetOutput> GetByUser(string author)
-        {
-            return _tweetService.GetTweetsByUser(author);
-        }
-
         // Insert a tweet from DB
         [HttpPost]
         [Route("tweets")]

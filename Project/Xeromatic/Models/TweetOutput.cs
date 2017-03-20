@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Xeromatic.Models
+﻿namespace Xeromatic.Models
 {
     public class TweetOutput
     {

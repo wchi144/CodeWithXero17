@@ -19,18 +19,6 @@ namespace Xeromatic.Repository
             }
         }
 
-        public IEnumerable<TweetOutput> GetTweetsByUser(string author)
-        {
-            using (var connection = new SqlConnection(_connectionString))
-            {
-                return connection.Query<TweetOutput>(
-                    @"SELECT Id, Author, TweetText, RetweetCount, FavouriteCount, TweetImage, CreationTime 
-                        FROM dbo.Tweets 
-                        WHERE Author=@author",
-                    new {author});
-            }
-        }
-
         public void Insert(TweetInput tweet)
         {
             using (var connection = new SqlConnection(_connectionString))
