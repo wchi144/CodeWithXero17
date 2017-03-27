@@ -16,12 +16,10 @@ namespace Xeromatic.Services
 
         public IEnumerable<TweetOutput> GetAllTweets()
         {
-            //Modify Autho name
             //Modify Tweet text with a->CAT logic
             var result = _tweetRepo.GetAllTweets().ToList();
             foreach (var item in result)
             {
-                item.Author = item.Author + " IS A COOL CAT!!";
                 item.TweetText = item.TweetText.Replace("a", "CAT");
             }
             return result;

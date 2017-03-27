@@ -14,7 +14,7 @@ namespace Xeromatic.Repository
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                return connection.Query<TweetOutput>(@"SELECT Id, Author, TweetText, RetweetCount, FavouriteCount, TweetImage, CreationTime 
+                return connection.Query<TweetOutput>(@"SELECT Id, TweetText, RetweetCount, TweetImage, CreationTime 
                                                     FROM dbo.Tweets");
             }
         }
@@ -23,11 +23,10 @@ namespace Xeromatic.Repository
         {
             using (var connection = new SqlConnection(_connectionString))
             {
-                connection.Execute("INSERT INTO Tweets (Id, Author, TweetText, RetweetCount, FavouriteCount, TweetImage, CreationTime) " +
-                                   "VALUES(@Id, @Author, @TweetText, @RetweetCount, @FavouriteCount, @TweetImage, @CreationTime); ", 
-                    new { Id=tweet.Id, Author=tweet.Author, TweetText=tweet.TweetText,
+                connection.Execute("INSERT INTO Tweets (Id, TweetText, RetweetCount, TweetImage, CreationTime) " +
+                                   "VALUES(@Id, @TweetText, @RetweetCount, @TweetImage, @CreationTime); ", 
+                    new { Id=tweet.Id, TweetText=tweet.TweetText,
                         RetweetCount=tweet.RetweetCount,
-                        FavouriteCount=tweet.FavouriteCount,
                         TweetImage=tweet.TweetImage,
                         CreationTime=tweet.CreationTime });
             }
